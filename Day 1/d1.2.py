@@ -2,22 +2,26 @@ import sys
 from pathlib import Path
 
 
-def depth_increases(input):
+def three_depth_increases(input):
     data = (input.split())
     nums = [eval(i) for i in data]
     count = 0
-    for i in range(1, len(nums)):
-        if nums[i - 1] < nums[i]:
+    window_size = 3
+    for i in range(len(nums) - window_size + 1):
+        if (sum(nums[i: i + window_size])) < (sum(nums[(i+1): i + window_size + 1])):
             count += 1
     print(count)
+
 
 
 if __name__ == "__main__":
     file = Path(sys.argv[1])
     if Path.is_file(file):
-        depth_increases(Path.read_text(file))
+        three_depth_increases(Path.read_text(file))
     else:
         raise TypeError("This is not a file")
+
+
 
 
 
