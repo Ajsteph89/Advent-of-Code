@@ -5,9 +5,21 @@ from pathlib import Path
 
 def diagnostics(input):
     nums = input.split()
-    get_oxygen(nums)
-    get_cohtwo(nums)
+    
+    oxygen = get_oxygen(nums)
+    co2 = get_cohtwo(nums)
 
+    oxygen_binary = ''.join(map(str, oxygen)) 
+    co2_binary = ''.join(map(str, co2)) 
+
+    oxygen_decimal = get_decimal(oxygen_binary)
+    co2_decimal = get_decimal(co2_binary)
+
+    life_support = oxygen_decimal * co2_decimal
+    
+    print('Oxygen is:', oxygen_decimal)
+    print('CO2 is:', co2_decimal)
+    print('Life Support is:', life_support)
 
 def get_oxygen(nums):
     for col in range(len(nums[0])):
@@ -27,7 +39,7 @@ def get_oxygen(nums):
             if len(filter_ones) < len(filter_zeros):
                 nums = filter_zeros
             if len(nums) == 1:
-                print('Oxygen rating', nums)
+                return(nums)
 
 def get_cohtwo(nums):
     for col in range(len(nums[0])):
@@ -47,8 +59,11 @@ def get_cohtwo(nums):
             if len(filter_ones) < len(filter_zeros):
                 nums = filter_ones
             if len(nums) == 1:
-                print('CO2 rating', nums)
+                return(nums)
 
+def get_decimal(binary):
+    decimal = int(binary, 2)
+    return(decimal)
 
 
 if __name__ == "__main__":
