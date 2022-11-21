@@ -35,3 +35,5 @@ My answer:
 Gamma is: 3069
 Epsilon is: 1026
 Power consumption is: 3148794
+
+Just need to get this pushed up
